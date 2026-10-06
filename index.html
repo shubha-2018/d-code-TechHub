@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Favicon & Icons with Cache Busting -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=dcode3" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/logo_icon.png?v=dcode3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/logo_icon.png?v=dcode3" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_icon.png?v=dcode3" />
+    <link rel="shortcut icon" href="/favicon.svg?v=dcode3" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D-Code</title>
+    <meta name="application-name" content="D-Code" />
+    <meta name="apple-mobile-web-app-title" content="D-Code" />
+    <meta name="theme-color" content="#00d2ff" />
+    <meta name="description" content="D-Code Tech Hub is a modern programming and technology learning platform focused on building strong fundamentals, practical coding skills, and real-world project experience through live online classes." />
+    <script>
+      // Clear any legacy service workers cached from other localhost projects (e.g. Grocery Mart)
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          for (var i = 0; i < regs.length; i++) { regs.unregister(); }
+        });
+      }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

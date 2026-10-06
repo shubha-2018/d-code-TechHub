@@ -1,0 +1,22 @@
+{
+  "name": "D-Code",
+  "short_name": "D-Code",
+  "description": "D-Code Tech Hub - Learn Programming. Build Projects. Grow Your Skills.",
+  "icons": [
+    {
+      "src": "/favicon.svg?v=dcode3",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo_icon.png?v=dcode3",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#04091a",
+  "theme_color": "#00d2ff"
+}
