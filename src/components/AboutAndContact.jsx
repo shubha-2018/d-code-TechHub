@@ -153,19 +153,21 @@ export default function AboutAndContact({ onNotify }) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="contact-form">
-                {errorMsg && <div className="form-error-banner">{errorMsg}</div>}
+              <form onSubmit={handleSubmit} className="contact-form" noValidate>
+                {errorMsg && <div className="form-error-banner" role="alert">{errorMsg}</div>}
 
                 {/* Name */}
                 <div className="form-group">
                   <div className="input-with-icon">
-                    <User size={18} className="input-icon-blue" />
+                    <User size={18} className="input-icon-blue" aria-hidden="true" />
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Your Name *"
+                      autoComplete="name"
+                      autoCapitalize="words"
                       required
                     />
                   </div>
@@ -174,13 +176,16 @@ export default function AboutAndContact({ onNotify }) {
                 {/* Email */}
                 <div className="form-group">
                   <div className="input-with-icon">
-                    <Mail size={18} className="input-icon-blue" />
+                    <Mail size={18} className="input-icon-blue" aria-hidden="true" />
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="Your Email *"
+                      inputMode="email"
+                      autoComplete="email"
+                      autoCapitalize="none"
                       required
                     />
                   </div>
@@ -189,13 +194,15 @@ export default function AboutAndContact({ onNotify }) {
                 {/* Phone */}
                 <div className="form-group">
                   <div className="input-with-icon">
-                    <Phone size={18} className="input-icon-blue" />
+                    <Phone size={18} className="input-icon-blue" aria-hidden="true" />
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Your Phone Number *"
+                      inputMode="tel"
+                      autoComplete="tel"
                       required
                     />
                   </div>
@@ -203,12 +210,13 @@ export default function AboutAndContact({ onNotify }) {
 
                 {/* Course Select */}
                 <div className="form-group">
-                  <div className="input-with-icon">
-                    <Globe size={18} className="input-icon-blue" />
+                  <div className="input-with-icon select-wrapper">
+                    <Globe size={18} className="input-icon-blue" aria-hidden="true" />
                     <select
                       name="course"
                       value={formData.course}
                       onChange={handleChange}
+                      aria-label="Select course"
                     >
                       <option value="C Programming">Course Interested In: C Programming</option>
                       <option value="C++ Programming">Course Interested In: C++ Programming</option>
@@ -223,7 +231,7 @@ export default function AboutAndContact({ onNotify }) {
                 {/* Message */}
                 <div className="form-group">
                   <div className="input-with-icon textarea-box">
-                    <MessageSquare size={18} className="input-icon-blue textarea-icon" />
+                    <MessageSquare size={18} className="input-icon-blue textarea-icon" aria-hidden="true" />
                     <textarea
                       name="message"
                       value={formData.message}
@@ -239,6 +247,7 @@ export default function AboutAndContact({ onNotify }) {
                   type="submit"
                   disabled={loading}
                   className="btn-send-enquiry"
+                  aria-label="Send Enquiry"
                 >
                   <span>{loading ? 'Sending Enquiry...' : 'Send Enquiry'}</span>
                   <ArrowRight size={17} />
