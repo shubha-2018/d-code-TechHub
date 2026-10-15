@@ -411,6 +411,7 @@ section[id] {
 
 .course-card-info {
   flex: 1 1 54%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -4069,6 +4070,77 @@ section[id] {
 
 /* Mobile & Small Tablets (max-width: 768px) */
 @media (max-width: 768px) {
+  /* Course Cards: Uniform Laptop Image Alignment & Zero Cutting */
+  .courses-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+
+  .course-card {
+    padding: 16px 14px 16px 16px;
+    gap: 12px;
+    align-items: center;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .course-card-info {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    min-height: auto;
+  }
+
+  .course-card-top {
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .course-card-title {
+    font-size: 16.5px;
+    line-height: 1.25;
+  }
+
+  .course-card-desc {
+    font-size: 12.5px;
+    line-height: 1.4;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    min-height: auto;
+  }
+
+  .btn-course-join {
+    padding: 7px 16px;
+    font-size: 12.5px;
+  }
+
+  /* Fixed exact width for laptop column so every laptop sits in the EXACT SAME vertical line */
+  .course-card-laptop {
+    flex: 0 0 108px !important;
+    width: 108px !important;
+    min-width: 108px !important;
+    max-width: 108px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .stylish-laptop-frame {
+    width: 100%;
+    max-width: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stylish-laptop-img {
+    width: 100%;
+    max-width: 104px !important;
+    height: auto;
+    object-fit: contain;
+    display: block;
+  }
+
   /* Page Header adjustments */
   .page-header-banner {
     padding: 38px 18px 30px 18px;
@@ -4314,6 +4386,42 @@ section[id] {
 
 /* Small Smartphone (max-width: 480px) */
 @media (max-width: 480px) {
+  /* Course Cards on Small Mobile */
+  .course-card {
+    padding: 14px 12px 14px 14px;
+    gap: 10px;
+  }
+
+  .course-card-title {
+    font-size: 15.5px;
+  }
+
+  .course-card-desc {
+    font-size: 12px;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .btn-course-join {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .course-card-laptop {
+    flex: 0 0 98px !important;
+    width: 98px !important;
+    min-width: 98px !important;
+    max-width: 98px !important;
+  }
+
+  .stylish-laptop-frame {
+    max-width: 98px;
+  }
+
+  .stylish-laptop-img {
+    max-width: 94px !important;
+  }
+
   .page-wrapper {
     padding-top: 72px;
   }
@@ -4384,6 +4492,34 @@ section[id] {
 
 /* Ultra-compact Mobile (max-width: 360px) */
 @media (max-width: 360px) {
+  .course-card {
+    padding: 12px 10px 12px 12px;
+    gap: 8px;
+  }
+
+  .course-card-title {
+    font-size: 14.5px;
+  }
+
+  .course-card-desc {
+    font-size: 11.5px;
+  }
+
+  .course-card-laptop {
+    flex: 0 0 88px !important;
+    width: 88px !important;
+    min-width: 88px !important;
+    max-width: 88px !important;
+  }
+
+  .stylish-laptop-frame {
+    max-width: 88px;
+  }
+
+  .stylish-laptop-img {
+    max-width: 84px !important;
+  }
+
   .contact-card-title {
     font-size: 18px;
   }
