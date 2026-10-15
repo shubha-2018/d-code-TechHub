@@ -75,48 +75,50 @@ export default function AboutAndContact({ onNotify }) {
           <div className="about-header">
             <span className="section-pill">ABOUT US</span>
             <h2 className="section-main-heading">About D-Code Tech Hub</h2>
+            <div className="about-motto-strip">
+              <span>Learn.</span>
+              <span>Code.</span>
+              <span>Build.</span>
+              <strong className="motto-accent">Grow.</strong>
+            </div>
           </div>
 
           <p className="about-paragraph">
-            D-Code Tech Hub provides live online programming and technology classes for students
-            and beginners. Our focus is on clear concepts, practical coding, problem solving, and
-            project-based learning.
+            <strong>D-CODE TECH HUB</strong> is a technology-focused learning institute committed to making quality technical education simple, practical, and accessible. The institute helps learners build strong programming fundamentals through structured, hands-on learning and practical experience.
           </p>
 
           <p className="about-paragraph">
-            We believe in learning by doing. Our goal is to help students build strong fundamentals
-            and real-world coding skills that prepare them for academic success and future career
-            opportunities.
+            At D-CODE TECH HUB, we provide a beginner-friendly and supportive learning environment, with structured curriculum, personal attention, doubt-solving support, and mentorship led by <strong>Prof. Dipali Dube</strong> (Founder &amp; Trainer, 4+ years coaching experience).
           </p>
 
           {/* 4 Feature Icons Row */}
           <div className="about-pillars-grid">
             <div className="about-pillar-item">
               <div className="pillar-icon-box">
-                <BookOpen size={26} className="pillar-icon" />
+                <BookOpen size={24} className="pillar-icon" />
               </div>
-              <span className="pillar-title">Concept<br />Based Learning</span>
+              <span className="pillar-title">Learn with<br />Clarity</span>
             </div>
 
             <div className="about-pillar-item">
               <div className="pillar-icon-box">
-                <Video size={26} className="pillar-icon" />
+                <Code2 size={24} className="pillar-icon" />
               </div>
-              <span className="pillar-title">Live<br />Classes</span>
+              <span className="pillar-title">Solve with<br />Logic</span>
             </div>
 
             <div className="about-pillar-item">
               <div className="pillar-icon-box">
-                <Code2 size={26} className="pillar-icon" />
+                <Rocket size={24} className="pillar-icon" />
               </div>
-              <span className="pillar-title">Practical<br />Coding</span>
+              <span className="pillar-title">Build through<br />Practice</span>
             </div>
 
             <div className="about-pillar-item">
               <div className="pillar-icon-box">
-                <Rocket size={26} className="pillar-icon" />
+                <Video size={24} className="pillar-icon" />
               </div>
-              <span className="pillar-title">Project-Based<br />Learning</span>
+              <span className="pillar-title">Grow with<br />Confidence</span>
             </div>
           </div>
         </div>

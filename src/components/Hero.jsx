@@ -21,7 +21,7 @@ export default function Hero({ onJoinClick }) {
               alt="D-Code Tech Hub - Learn Programming. Build Projects. Grow Your Skills."
               className="hero-fullscreen-img"
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </picture>
 
@@ -64,7 +64,7 @@ export default function Hero({ onJoinClick }) {
       {/* Responsive Fallback/Companion Section for Mobile & Small Tablets */}
       <div className="hero-mobile-content">
         <div className="hero-eyebrow">
-          <span>Code • Build • Innovate</span>
+          <span>Learn • Code • Build • Grow</span>
         </div>
 
         <h1 className="hero-title">
@@ -74,9 +74,8 @@ export default function Hero({ onJoinClick }) {
         </h1>
 
         <p className="hero-description">
-          D-Code Tech Hub is a modern programming and technology learning platform focused on
-          building strong fundamentals, practical coding skills, and real-world project experience
-          through live online classes.
+          D-Code Tech Hub is a technology-focused learning institute committed to making quality
+          technical education simple, practical, and accessible through live interactive classes.
         </p>
 
         <div className="hero-cta-group">

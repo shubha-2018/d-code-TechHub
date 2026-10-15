@@ -9,13 +9,20 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/logo_icon.png?v=dcode3" />
     <link rel="shortcut icon" href="/favicon.svg?v=dcode3" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D-Code</title>
-    <meta name="application-name" content="D-Code" />
-    <meta name="apple-mobile-web-app-title" content="D-Code" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>D-Code Tech Hub | Learn. Code. Build. Grow.</title>
+    <meta name="application-name" content="D-Code Tech Hub" />
+    <meta name="apple-mobile-web-app-title" content="D-Code Tech Hub" />
     <meta name="theme-color" content="#00d2ff" />
-    <meta name="description" content="D-Code Tech Hub is a modern programming and technology learning platform focused on building strong fundamentals, practical coding skills, and real-world project experience through live online classes." />
+    <meta name="description" content="D-Code Tech Hub is a technology-focused learning institute founded by Prof. Dipali Dube. Training in C, C++, Java, Python, and Web Technology with live online classes. Learn. Code. Build. Grow." />
+    <meta property="og:title" content="D-Code Tech Hub | Learn. Code. Build. Grow." />
+    <meta property="og:description" content="Quality technical education made simple, practical, and accessible. Founded & mentored by Prof. Dipali Dube." />
+    <meta property="og:type" content="website" />
     <script>
+      // Prevent unwanted gesture/pinch zooming on iOS Safari
+      document.addEventListener('gesturestart', function(e) {
+        e.preventDefault();
+      });
       // Clear any legacy service workers cached from other localhost projects (e.g. Grocery Mart)
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(function(regs) {

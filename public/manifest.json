@@ -1,7 +1,7 @@
 {
-  "name": "D-Code",
-  "short_name": "D-Code",
-  "description": "D-Code Tech Hub - Learn Programming. Build Projects. Grow Your Skills.",
+  "name": "D-Code Tech Hub",
+  "short_name": "D-Code Tech Hub",
+  "description": "D-Code Tech Hub - Learn. Code. Build. Grow.",
   "icons": [
     {
       "src": "/favicon.svg?v=dcode3",

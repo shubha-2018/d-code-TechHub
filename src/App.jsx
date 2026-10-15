@@ -37,8 +37,8 @@ function App() {
       }
     };
 
-    // Set page/tab title to D-Code
-    document.title = 'D-Code';
+    // Set page/tab title to D-Code Tech Hub
+    document.title = 'D-Code Tech Hub | Learn. Code. Build. Grow.';
 
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -87,8 +87,8 @@ function App() {
   };
 
   const handleYouTubeClick = () => {
-    showToast('Redirecting to D-Code Tech Hub official YouTube Channel tutorials...');
-    window.open('https://youtube.com', '_blank');
+    showToast('Opening official D-Code Tech Hub YouTube Channel (@dcodetechhub)...');
+    window.open('https://www.youtube.com/@dcodetechhub', '_blank');
   };
 
   return (
