@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import EnrollModal from './components/EnrollModal';
 import VideoModal from './components/VideoModal';
 import CourseModal from './components/CourseModal';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Toast from './components/Toast';
 import './App.css';
 
@@ -156,7 +157,7 @@ function App() {
         selectedCourse={selectedCourseForEnroll}
         onClose={() => setEnrollModalOpen(false)}
         onConfirm={(studentName, course) => {
-          showToast(`Seat reserved for ${studentName} in ${course}! Demo details sent.`);
+          showToast(`✅ Join request for ${studentName} (${course}) forwarded to WhatsApp (+91 9284316487)!`);
         }}
       />
 
@@ -172,6 +173,9 @@ function App() {
         onClose={() => setCourseModalOpen(false)}
         onEnrollCourse={(courseTitle) => handleOpenEnroll(courseTitle)}
       />
+
+      {/* Floating Join Now WhatsApp Widget */}
+      <FloatingWhatsApp onOpenEnroll={handleOpenEnroll} />
 
       {/* Floating Notification Toast */}
       <Toast message={toastMessage} onClose={() => setToastMessage('')} />

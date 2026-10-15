@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Calendar, Clock, Video, ArrowRight, ShieldCheck } from 'lucide-react';
+import { X, CheckCircle2, Video, ArrowRight, ShieldCheck, MessageCircle } from 'lucide-react';
 import { COURSES_DATA } from './Courses';
+import {
+  submitJoinNowToWhatsApp,
+  getQuickWhatsAppJoinUrl,
+  WHATSAPP_BACKEND_CONFIG
+} from '../services/joinNowBackend';
 
 export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm }) {
   if (!isOpen) return null;
@@ -16,18 +21,30 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [whatsappReceiptUrl, setWhatsappReceiptUrl] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // Dispatch lead data to official WhatsApp backend (+91 9284316487)
+    const result = submitJoinNowToWhatsApp(formData);
+    setWhatsappReceiptUrl(result.url);
+
+    // Open WhatsApp Web/App with pre-filled application details
+    try {
+      window.open(result.url, '_blank', 'noopener,noreferrer');
+    } catch (err) {
+      console.warn('Popup blocked by browser:', err);
+    }
+
     setTimeout(() => {
       setLoading(false);
       setSubmitted(true);
       if (onConfirm) {
-        onConfirm(formData.name, formData.course);
+        onConfirm(formData.name, formData.course, result.url);
       }
-    }, 800);
+    }, 600);
   };
 
   return (
@@ -40,37 +57,87 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
         {submitted ? (
           <div className="modal-success-view">
             <CheckCircle2 size={64} className="modal-success-icon" />
-            <h3 className="modal-success-title">Enrollment Request Received!</h3>
+            <h3 className="modal-success-title">Join Request Sent to WhatsApp!</h3>
             <p className="modal-success-desc">
-              Congratulations <strong>{formData.name}</strong>! You have reserved your seat for{' '}
-              <span className="text-highlight">{formData.course}</span>.
+              Congratulations <strong>{formData.name}</strong>! Your application for{' '}
+              <span className="text-highlight">{formData.course}</span> has been processed and forwarded to our official admissions team.
             </p>
             <div className="enroll-receipt-card">
               <div className="receipt-item">
+                <span>Student Name:</span>
+                <strong>{formData.name}</strong>
+              </div>
+              <div className="receipt-item">
+                <span>Selected Course:</span>
+                <strong>{formData.course}</strong>
+              </div>
+              <div className="receipt-item">
+                <span>WhatsApp Backend:</span>
+                <strong style={{ color: '#10b981' }}>{WHATSAPP_BACKEND_CONFIG.displayNumber} (Connected)</strong>
+              </div>
+              <div className="receipt-item">
                 <span>Batch Mode:</span>
-                <strong>Live Online (Zoom / Meet)</strong>
+                <strong>Live Online (Zoom / Google Meet)</strong>
               </div>
               <div className="receipt-item">
                 <span>Preference:</span>
                 <strong>{formData.batchPreference}</strong>
               </div>
               <div className="receipt-item">
-                <span>Free Demo Class:</span>
-                <strong style={{ color: '#10b981' }}>Confirmed (Link sent via WhatsApp)</strong>
+                <span>Free Demo Session:</span>
+                <strong style={{ color: '#10b981' }}>Reserved via WhatsApp</strong>
               </div>
             </div>
-            <button className="btn-modal-done" onClick={onClose}>
-              Done & Return to Site
-            </button>
+
+            <div className="modal-success-actions">
+              <a
+                href={whatsappReceiptUrl || getQuickWhatsAppJoinUrl(formData.course)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-modal-whatsapp-cta"
+              >
+                <MessageCircle size={18} />
+                <span>Open in WhatsApp</span>
+              </a>
+              <button className="btn-modal-done" onClick={onClose}>
+                Done & Return to Site
+              </button>
+            </div>
           </div>
         ) : (
           <div>
             <div className="modal-header">
-              <span className="modal-badge">START LEARNING TODAY</span>
+              <div className="modal-badge-row">
+                <span className="modal-badge">START LEARNING TODAY</span>
+                <span className="modal-wa-badge">
+                  <span className="wa-dot"></span> WhatsApp Backend: {WHATSAPP_BACKEND_CONFIG.displayNumber}
+                </span>
+              </div>
               <h3 className="modal-title">Join D-Code Tech Hub</h3>
               <p className="modal-subtitle">
-                Reserve your free live demo session and get step-by-step guidance from industry mentors.
+                Reserve your free live demo session. All enrollment requests are instantly connected to our official WhatsApp backend.
               </p>
+            </div>
+
+            {/* Quick 1-Click WhatsApp Join Banner */}
+            <div className="modal-quick-whatsapp-banner">
+              <div className="quick-banner-text">
+                <div className="quick-banner-title">
+                  <MessageCircle size={15} color="#25D366" />
+                  <strong>Want instant 1-click Join?</strong>
+                </div>
+                <span>Skip the full form and chat directly with admissions mentor</span>
+              </div>
+              <a
+                href={getQuickWhatsAppJoinUrl(formData.course)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-modal-quick-wa"
+                aria-label="Direct WhatsApp Join Now"
+              >
+                <span>Join on WhatsApp</span>
+                <ArrowRight size={14} />
+              </a>
             </div>
 
             <form onSubmit={handleSubmit} className="modal-form">
@@ -158,10 +225,24 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
                 </div>
               </div>
 
-              <button type="submit" disabled={loading} className="btn-modal-submit">
-                <span>{loading ? 'Submitting Details...' : 'Confirm Demo & Enroll Now'}</span>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-modal-submit btn-modal-whatsapp-submit"
+                title="Submit details and dispatch to WhatsApp backend"
+              >
+                <MessageCircle size={19} />
+                <span>{loading ? 'Connecting to WhatsApp...' : 'Submit & Join via WhatsApp'}</span>
                 <ArrowRight size={18} />
               </button>
+
+              <div className="modal-backend-security-note">
+                <ShieldCheck size={14} color="#10b981" />
+                <span>
+                  Official WhatsApp Backend: All submissions forward directly to admissions at{' '}
+                  <strong>{WHATSAPP_BACKEND_CONFIG.displayNumber}</strong>.
+                </span>
+              </div>
             </form>
           </div>
         )}
