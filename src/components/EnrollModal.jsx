@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Video, ArrowRight, ShieldCheck, MessageCircle } from 'lucide-react';
+import { X, CheckCircle2, Video, ArrowRight, ShieldCheck } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { COURSES_DATA } from './Courses';
 import {
   submitJoinNowToWhatsApp,
@@ -96,7 +97,7 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
                 rel="noopener noreferrer"
                 className="btn-modal-whatsapp-cta"
               >
-                <MessageCircle size={18} />
+                <WhatsAppIcon size={20} color="#ffffff" />
                 <span>Open in WhatsApp</span>
               </a>
               <button className="btn-modal-done" onClick={onClose}>
@@ -110,7 +111,8 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
               <div className="modal-badge-row">
                 <span className="modal-badge">START LEARNING TODAY</span>
                 <span className="modal-wa-badge">
-                  <span className="wa-dot"></span> WhatsApp Backend: {WHATSAPP_BACKEND_CONFIG.displayNumber}
+                  <WhatsAppIcon size={14} color="#047857" />
+                  <span>WhatsApp Backend: {WHATSAPP_BACKEND_CONFIG.displayNumber}</span>
                 </span>
               </div>
               <h3 className="modal-title">Join D-Code Tech Hub</h3>
@@ -123,7 +125,7 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
             <div className="modal-quick-whatsapp-banner">
               <div className="quick-banner-text">
                 <div className="quick-banner-title">
-                  <MessageCircle size={15} color="#25D366" />
+                  <WhatsAppIcon size={16} color="#25D366" />
                   <strong>Want instant 1-click Join?</strong>
                 </div>
                 <span>Skip the full form and chat directly with admissions mentor</span>
@@ -135,6 +137,7 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
                 className="btn-modal-quick-wa"
                 aria-label="Direct WhatsApp Join Now"
               >
+                <WhatsAppIcon size={15} color="#ffffff" />
                 <span>Join on WhatsApp</span>
                 <ArrowRight size={14} />
               </a>
@@ -231,7 +234,7 @@ export default function EnrollModal({ isOpen, onClose, selectedCourse, onConfirm
                 className="btn-modal-submit btn-modal-whatsapp-submit"
                 title="Submit details and dispatch to WhatsApp backend"
               >
-                <MessageCircle size={19} />
+                <WhatsAppIcon size={20} color="#ffffff" />
                 <span>{loading ? 'Connecting to WhatsApp...' : 'Submit & Join via WhatsApp'}</span>
                 <ArrowRight size={18} />
               </button>

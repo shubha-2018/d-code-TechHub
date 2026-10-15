@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { MessageCircle, X, Sparkles, Send } from 'lucide-react';
+import { X, Sparkles, Send } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 import { WHATSAPP_BACKEND_CONFIG, getQuickWhatsAppJoinUrl } from '../services/joinNowBackend';
 
 export default function FloatingWhatsApp({ onOpenEnroll }) {
@@ -16,7 +17,7 @@ export default function FloatingWhatsApp({ onOpenEnroll }) {
           <div className="floating-popup-header">
             <div className="floating-popup-brand">
               <div className="popup-avatar-ring">
-                <MessageCircle size={22} color="#ffffff" />
+                <WhatsAppIcon size={22} color="#ffffff" />
                 <span className="popup-online-dot"></span>
               </div>
               <div className="popup-brand-text">
@@ -50,7 +51,7 @@ export default function FloatingWhatsApp({ onOpenEnroll }) {
               onClick={handleDirectWhatsApp}
               className="btn-popup-whatsapp-send"
             >
-              <MessageCircle size={17} />
+              <WhatsAppIcon size={18} color="#ffffff" />
               <span>Join Now on WhatsApp</span>
             </button>
             <button
@@ -75,7 +76,7 @@ export default function FloatingWhatsApp({ onOpenEnroll }) {
           aria-label="Join Now on WhatsApp Admissions"
         >
           <span className="floating-pulse-ring"></span>
-          <MessageCircle size={26} className="floating-wa-icon" />
+          <WhatsAppIcon size={24} color="#ffffff" className="floating-wa-icon" />
           <span className="floating-btn-text">Join Now</span>
         </button>
       </div>

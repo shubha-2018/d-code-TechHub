@@ -7,7 +7,6 @@ import {
   User,
   Globe,
   MessageSquare,
-  MessageCircle,
   ArrowRight,
   CheckCircle2,
   HelpCircle,
@@ -16,6 +15,7 @@ import {
   MapPin,
   ExternalLink
 } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function ContactPage({ onNotify }) {
   const [formData, setFormData] = useState({
@@ -135,7 +135,7 @@ export default function ContactPage({ onNotify }) {
                 aria-label="Chat on WhatsApp at 9284316487"
               >
                 <div className="quick-btn-icon-wrapper">
-                  <MessageCircle size={18} />
+                  <WhatsAppIcon size={18} color="#ffffff" />
                 </div>
                 <div className="quick-btn-text">
                   <strong>WhatsApp</strong>
@@ -197,7 +197,7 @@ export default function ContactPage({ onNotify }) {
                     rel="noopener noreferrer"
                     className="card-mini-action-btn whatsapp-action"
                   >
-                    <MessageCircle size={13} /> WhatsApp
+                    <WhatsAppIcon size={14} color="#ffffff" /> WhatsApp
                   </a>
                 </div>
               </div>
