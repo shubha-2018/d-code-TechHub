@@ -106,225 +106,69 @@ export default function ContactPage({ onNotify }) {
       <section className="contact-main-section">
         <div className="contact-main-container">
 
-          {/* Mobile Fast Contact Action Bar (Instant Tap to Call / WhatsApp / Email) */}
-          <div className="mobile-quick-actions-card">
-            <div className="quick-actions-header">
-              <span className="quick-actions-badge">FAST CONNECT</span>
-              <p className="quick-actions-hint">Instant 1-Tap Admissions &amp; Inquiries</p>
-            </div>
-            <div className="mobile-quick-actions-grid">
-              <a
-                href="tel:+919284316487"
-                className="mobile-quick-btn quick-btn-call"
-                aria-label="Call admissions directly at +91 9284316487"
-              >
-                <div className="quick-btn-icon-wrapper">
-                  <Phone size={18} />
-                </div>
-                <div className="quick-btn-text">
-                  <strong>Call Now</strong>
-                  <span>9284316487</span>
-                </div>
-              </a>
 
-              <a
-                href="https://wa.me/919284316487?text=Hello%20D-Code%20Tech%20Hub,%20I%20would%20like%20to%20inquire%20about%20the%20courses%20and%20upcoming%20batches."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mobile-quick-btn quick-btn-whatsapp"
-                aria-label="Chat on WhatsApp at 9284316487"
-              >
-                <div className="quick-btn-icon-wrapper">
-                  <WhatsAppIcon size={18} color="#ffffff" />
-                </div>
-                <div className="quick-btn-text">
-                  <strong>WhatsApp</strong>
-                  <span>9284316487</span>
-                </div>
-              </a>
-
-              <a
-                href="mailto:dcodetechhub@gmail.com"
-                className="mobile-quick-btn quick-btn-email"
-                aria-label="Email admissions team at dcodetechhub@gmail.com"
-              >
-                <div className="quick-btn-icon-wrapper">
-                  <Mail size={18} />
-                </div>
-                <div className="quick-btn-text">
-                  <strong>Email Us</strong>
-                  <span>dcodetechhub</span>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          {/* Left Column: Direct Info Cards */}
+          {/* Left Column: Contact Information Card (matching uploaded format) */}
           <div className="contact-info-column">
-            <div className="contact-column-header">
-              <span className="contact-section-pill">DIRECT CONNECT</span>
-              <h2 className="contact-column-heading">Company Information</h2>
-              <p className="contact-column-sub">
-                Reach out directly to D-Code Tech Hub for course admissions, batch schedules, syllabus guidance, or center visits.
-              </p>
-            </div>
+            <div className="contact-info-card-uploaded">
+              <h2 className="uploaded-card-title">Contact Information</h2>
 
-            <div className="contact-info-cards-grid">
-              {/* Card 1: Phone & WhatsApp */}
-              <div className="info-grid-card">
-                <div className="info-card-header-row">
-                  <div className="info-card-icon-box phone-box">
-                    <Phone size={20} className="info-icon" />
+              <div className="uploaded-card-list">
+                {/* 1. Email */}
+                <div className="uploaded-contact-item">
+                  <div className="uploaded-icon-circle">
+                    <Mail size={22} strokeWidth={1.8} />
                   </div>
-                  <span className="live-status-indicator">
-                    <span className="pulse-dot"></span> Available
-                  </span>
-                </div>
-                <strong className="info-grid-card-label">Business &amp; Client Contact</strong>
-                <a href="tel:+919284316487" className="info-grid-card-main-val">
-                  +91 92843 16487
-                </a>
-                <p className="info-grid-card-meta">
-                  Business &amp; Client Number: <strong>9284316487</strong>
-                </p>
-                <div className="info-card-actions-row">
-                  <a href="tel:+919284316487" className="card-mini-action-btn call-action">
-                    <Phone size={13} /> Call
-                  </a>
-                  <a
-                    href="https://wa.me/919284316487?text=Hello%20D-Code%20Tech%20Hub,%20I%20would%20like%20to%20inquire%20about%20the%20courses."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-mini-action-btn whatsapp-action"
-                  >
-                    <WhatsAppIcon size={14} color="#ffffff" /> WhatsApp
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 2: Official Email */}
-              <div className="info-grid-card">
-                <div className="info-card-header-row">
-                  <div className="info-card-icon-box mail-box">
-                    <Mail size={20} className="info-icon" />
-                  </div>
-                  <span className="info-sub-pill">Official Inquiries</span>
-                </div>
-                <strong className="info-grid-card-label">Official Email ID</strong>
-                <a href="mailto:dcodetechhub@gmail.com" className="info-grid-card-main-val email-val">
-                  dcodetechhub@gmail.com
-                </a>
-                <p className="info-grid-card-meta">
-                  Admissions, syllabus guidance &amp; queries
-                </p>
-                <div className="info-card-actions-row">
-                  <a href="mailto:dcodetechhub@gmail.com" className="card-mini-action-btn email-action">
-                    <Mail size={13} /> Send Email
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 3: Office Address */}
-              <div className="info-grid-card">
-                <div className="info-card-header-row">
-                  <div className="info-card-icon-box map-box">
-                    <MapPin size={20} className="info-icon" />
-                  </div>
-                  <span className="pin-badge">PIN: 431509</span>
-                </div>
-                <strong className="info-grid-card-label">Office Full Address</strong>
-                <p className="info-grid-card-main-val address-val">
-                  Near post office Jintur- 431509
-                </p>
-                <p className="info-grid-card-meta">
-                  Jintur, Maharashtra &bull; PIN Code: 431509
-                </p>
-                <div className="info-card-actions-row">
-                  <a
-                    href="https://maps.google.com/?q=Near+post+office+Jintur+431509"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="card-mini-action-btn map-action"
-                  >
-                    <ExternalLink size={13} /> View on Map
-                  </a>
-                </div>
-              </div>
-
-              {/* Card 4: Founder & Trainer */}
-              <div className="info-grid-card founder-grid-card">
-                <div className="info-card-header-row">
-                  <div className="info-card-icon-box founder-avatar-box">
-                    <img
-                      src="/images/founder_dipali_dube.png?v=real_founder"
-                      alt="Prof. Dipali Dube"
-                      className="founder-mini-avatar-img"
-                    />
-                  </div>
-                  <span className="founder-exp-pill">4+ Yrs Exp</span>
-                </div>
-                <strong className="info-grid-card-label">Founder &amp; Lead Trainer</strong>
-                <p className="info-grid-card-main-val founder-val">
-                  Prof. Dipali Dube
-                </p>
-                <p className="info-grid-card-meta">
-                  Dipali Sureshrao Dube &bull; Founder, D-Code Tech Hub
-                </p>
-                <div className="founder-mini-badge">
-                  <span>Personal Attention &bull; Practical Projects</span>
-                </div>
-              </div>
-
-              {/* Card 5 (Full Width Spanning 2 Columns): Social Media & Live Schedule */}
-              <div className="info-grid-banner-card">
-                <div className="banner-social-half">
-                  <div className="banner-top">
-                    <Globe size={18} className="banner-icon-blue" />
-                    <strong>Official Social Media Channels</strong>
-                  </div>
-                  <p className="banner-sub">Watch free coding tutorials &amp; tech updates:</p>
-                  <div className="banner-social-buttons">
-                    <a
-                      href="https://www.youtube.com/@dcodetechhub"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="banner-social-btn yt-btn"
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                        <path d="M21.582 6.186a2.766 2.766 0 0 0-1.945-1.96C17.92 3.7 12 3.7 12 3.7s-5.92 0-7.637.526A2.766 2.766 0 0 0 2.418 6.186C1.9 7.915 1.9 11.5 1.9 11.5s0 3.585.518 5.314a2.766 2.766 0 0 0 1.945 1.96c1.717.526 7.637.526 7.637.526s5.92 0 7.637-.526a2.766 2.766 0 0 0 1.945-1.96c.518-1.729.518-5.314.518-5.314s0-3.585-.518-5.314zM10 14.5V8.5L15.2 11.5 10 14.5z"/>
-                      </svg>
-                      <span>YouTube: @dcodetechhub</span>
-                    </a>
-                    <a
-                      href="https://www.instagram.com/dcodetechhub/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="banner-social-btn insta-btn"
-                    >
-                      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
-                      </svg>
-                      <span>Instagram: @dcodetechhub</span>
+                  <div className="uploaded-contact-text">
+                    <a href="mailto:dcodetechhub@gmail.com" className="uploaded-link">
+                      dcodetechhub@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="banner-schedule-half">
-                  <div className="schedule-item">
-                    <Video size={16} className="schedule-icon" />
-                    <div>
-                      <strong>Live Online Classes</strong>
-                      <span>Google Meet &amp; Zoom Live Rooms</span>
-                    </div>
+                {/* 2. Phone */}
+                <div className="uploaded-contact-item">
+                  <div className="uploaded-icon-circle">
+                    <Phone size={22} strokeWidth={1.8} />
                   </div>
-                  <div className="schedule-item">
-                    <Clock size={16} className="schedule-icon" />
-                    <div>
-                      <strong>Counseling Hours</strong>
-                      <span>Mon – Sat: 9:00 AM – 8:30 PM IST</span>
-                    </div>
+                  <div className="uploaded-contact-text">
+                    <a href="tel:+919284316487" className="uploaded-link">
+                      +91 92843 16487
+                    </a>
+                  </div>
+                </div>
+
+                {/* 3. Website */}
+                <div className="uploaded-contact-item">
+                  <div className="uploaded-icon-circle">
+                    <Globe size={22} strokeWidth={1.8} />
+                  </div>
+                  <div className="uploaded-contact-text">
+                    <a
+                      href="https://www.dcodetechhub.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="uploaded-link"
+                    >
+                      www.dcodetechhub.com
+                    </a>
+                  </div>
+                </div>
+
+                {/* 4. Address */}
+                <div className="uploaded-contact-item align-top">
+                  <div className="uploaded-icon-circle">
+                    <MapPin size={22} strokeWidth={1.8} />
+                  </div>
+                  <div className="uploaded-contact-text">
+                    <a
+                      href="https://maps.google.com/?q=Near+post+office+Jintur+431509"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="uploaded-link uploaded-address"
+                    >
+                      <span>Near post office Jintur- 431509</span>
+                      <span className="uploaded-address-sub">Jintur, Maharashtra &bull; PIN: 431509</span>
+                    </a>
                   </div>
                 </div>
               </div>

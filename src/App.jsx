@@ -26,14 +26,54 @@ function getInitialTab() {
 function App() {
   // Navigation & Page state
   const [activeTab, setActiveTab] = useState(getInitialTab);
+  const [selectedContactCourse, setSelectedContactCourse] = useState('C Programming');
+
+  const scrollToContactForm = () => {
+    const doScroll = () => {
+      const card =
+        document.getElementById('contact-form-card') ||
+        document.getElementById('contact-form') ||
+        document.getElementById('contact-form-section');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Add subtle attention glow
+        card.classList.add('highlight-join-form');
+        setTimeout(() => {
+          card.classList.remove('highlight-join-form');
+        }, 1800);
+
+        // Focus name input field
+        const nameInput = document.getElementById('contact-name');
+        if (nameInput) {
+          nameInput.focus();
+        }
+        return true;
+      }
+      return false;
+    };
+
+    if (!doScroll()) {
+      setTimeout(doScroll, 80);
+      setTimeout(doScroll, 200);
+      setTimeout(doScroll, 400);
+    } else {
+      setTimeout(doScroll, 80);
+    }
+  };
 
   // Sync with browser back/forward buttons
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
-      if (VALID_TABS.includes(hash)) {
-        setActiveTab(hash);
-      } else if (!hash) {
+      const cleanHash = window.location.hash.replace(/^#\/?/, '').toLowerCase().split('?')[0];
+      if (cleanHash === 'contact' || cleanHash === 'contact-form' || cleanHash === 'contact-us') {
+        setActiveTab('contact');
+        if (cleanHash === 'contact-form') {
+          setTimeout(scrollToContactForm, 100);
+        }
+      } else if (VALID_TABS.includes(cleanHash)) {
+        setActiveTab(cleanHash);
+      } else if (!cleanHash) {
         setActiveTab('home');
       }
     };
@@ -72,8 +112,10 @@ function App() {
     }, 4500);
   };
 
-  const handleOpenEnroll = (courseName = '') => {
-    setSelectedCourseForEnroll(courseName || 'Core Java');
+  // Open only the Send Us a Message form modal when clicking "Join Now"
+  const handleJoinClick = (courseName = '') => {
+    setCourseModalOpen(false);
+    setSelectedCourseForEnroll(courseName || 'C Programming');
     setEnrollModalOpen(true);
   };
 
@@ -98,16 +140,16 @@ function App() {
       <Navbar
         activeTab={activeTab}
         onNavigate={handleNavigate}
-        onJoinClick={() => handleOpenEnroll()}
+        onJoinClick={() => handleJoinClick()}
       />
 
       {/* Main Tab View */}
       <main>
         {activeTab === 'home' && (
           <HomePage
-            onJoinClick={() => handleOpenEnroll()}
+            onJoinClick={() => handleJoinClick()}
             onNavigate={handleNavigate}
-            onJoinCourse={(courseTitle) => handleOpenEnroll(courseTitle)}
+            onJoinCourse={(courseTitle) => handleJoinClick(courseTitle)}
             onViewCourseDetails={handleViewCourseDetails}
             onPlayReview={handlePlayReview}
             onYouTubeClick={handleYouTubeClick}
@@ -117,7 +159,7 @@ function App() {
 
         {activeTab === 'courses' && (
           <CoursesPage
-            onJoinCourse={(courseTitle) => handleOpenEnroll(courseTitle)}
+            onJoinCourse={(courseTitle) => handleJoinClick(courseTitle)}
             onViewDetails={handleViewCourseDetails}
           />
         )}
@@ -131,13 +173,14 @@ function App() {
 
         {activeTab === 'about' && (
           <AboutPage
-            onJoinClick={() => handleOpenEnroll()}
+            onJoinClick={() => handleJoinClick()}
             onNavigate={handleNavigate}
           />
         )}
 
         {activeTab === 'contact' && (
           <ContactPage
+            initialCourse={selectedContactCourse}
             onNotify={showToast}
           />
         )}
@@ -171,11 +214,11 @@ function App() {
         isOpen={courseModalOpen}
         course={activeCourseDetails}
         onClose={() => setCourseModalOpen(false)}
-        onEnrollCourse={(courseTitle) => handleOpenEnroll(courseTitle)}
+        onEnrollCourse={(courseTitle) => handleJoinClick(courseTitle)}
       />
 
       {/* Floating Join Now WhatsApp Widget */}
-      <FloatingWhatsApp onOpenEnroll={handleOpenEnroll} />
+      <FloatingWhatsApp />
 
       {/* Floating Notification Toast */}
       <Toast message={toastMessage} onClose={() => setToastMessage('')} />

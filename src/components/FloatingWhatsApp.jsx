@@ -1,85 +1,27 @@
-import React, { useState } from 'react';
-import { X, Sparkles, Send } from 'lucide-react';
+import React from 'react';
 import WhatsAppIcon from './WhatsAppIcon';
 import { WHATSAPP_BACKEND_CONFIG, getQuickWhatsAppJoinUrl } from '../services/joinNowBackend';
 
-export default function FloatingWhatsApp({ onOpenEnroll }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleDirectWhatsApp = () => {
-    window.open(getQuickWhatsAppJoinUrl(), '_blank', 'noopener,noreferrer');
-  };
+export default function FloatingWhatsApp() {
+  const whatsappUrl = getQuickWhatsAppJoinUrl();
 
   return (
-    <div className="floating-whatsapp-container" aria-label="WhatsApp Join Now Support">
-      {isOpen && (
-        <div className="floating-whatsapp-popup" role="dialog" aria-modal="true">
-          <div className="floating-popup-header">
-            <div className="floating-popup-brand">
-              <div className="popup-avatar-ring">
-                <WhatsAppIcon size={22} color="#ffffff" />
-                <span className="popup-online-dot"></span>
-              </div>
-              <div className="popup-brand-text">
-                <strong>D-Code Tech Hub</strong>
-                <span>Admissions &amp; Counselor Live</span>
-              </div>
-            </div>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="popup-close-btn"
-              aria-label="Close WhatsApp chat popup"
-            >
-              <X size={16} />
-            </button>
-          </div>
-
-          <div className="floating-popup-body">
-            <div className="floating-chat-bubble">
-              <p>
-                👋 Hello! Welcome to <strong>D-Code Tech Hub</strong>.
-              </p>
-              <p>
-                Ready to level up your coding skills? Join our upcoming live batch with a <strong>Free Demo Class</strong>!
-              </p>
-              <span className="chat-timestamp">Admissions Team &bull; Online</span>
-            </div>
-          </div>
-
-          <div className="floating-popup-footer">
-            <button
-              onClick={handleDirectWhatsApp}
-              className="btn-popup-whatsapp-send"
-            >
-              <WhatsAppIcon size={18} color="#ffffff" />
-              <span>Join Now on WhatsApp</span>
-            </button>
-            <button
-              onClick={() => {
-                setIsOpen(false);
-                if (onOpenEnroll) onOpenEnroll();
-              }}
-              className="btn-popup-custom-form"
-            >
-              <span>Or fill full demo reservation form</span>
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Main Floating Trigger Button */}
+    <aside className="floating-whatsapp-container" aria-label="Direct WhatsApp Contact">
       <div className="floating-trigger-wrapper">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           className="floating-whatsapp-btn"
-          title={`Join Now on WhatsApp (${WHATSAPP_BACKEND_CONFIG.displayNumber})`}
-          aria-label="Join Now on WhatsApp Admissions"
+          title={`Direct Chat on WhatsApp (${WHATSAPP_BACKEND_CONFIG.displayNumber})`}
+          aria-label="Direct Chat on WhatsApp"
         >
           <span className="floating-pulse-ring"></span>
           <WhatsAppIcon size={24} color="#ffffff" className="floating-wa-icon" />
-          <span className="floating-btn-text">Join Now</span>
-        </button>
+          <span className="floating-btn-text">WhatsApp</span>
+        </a>
       </div>
-    </div>
+    </aside>
   );
 }
+

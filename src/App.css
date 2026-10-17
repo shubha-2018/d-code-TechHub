@@ -3497,40 +3497,132 @@ section[id] {
 
 /* Contact Information Column */
 .contact-main-container {
-  max-width: 1280px;
+  max-width: 1240px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
+  grid-template-columns: 1fr 1fr;
   gap: 36px;
-  align-items: start;
+  align-items: stretch;
 }
 
-.contact-column-header {
-  margin-bottom: 20px;
+/* Uploaded Format: Clean Contact Information Card */
+.contact-info-card-uploaded {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 44px 38px;
+  border: 1.5px solid #d1fae5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.contact-section-pill {
+.uploaded-card-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.4px;
+  margin-bottom: 36px;
+}
+
+.uploaded-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.uploaded-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.uploaded-contact-item.align-top {
+  align-items: flex-start;
+}
+
+.uploaded-icon-circle {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 50%;
+  background: #e8f5e9;
+  color: #15803d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.uploaded-contact-item:hover .uploaded-icon-circle {
+  transform: scale(1.06);
+  background: #dcfce7;
+}
+
+.uploaded-contact-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.uploaded-link {
+  font-size: 16.5px;
+  font-weight: 500;
+  color: #1f2937;
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.2s ease;
   display: inline-block;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: #0284c7;
-  text-transform: uppercase;
-  margin-bottom: 6px;
+  word-break: break-word;
 }
 
-.contact-column-heading {
-  font-size: 27px;
-  font-weight: 800;
-  color: var(--text-dark);
-  letter-spacing: -0.5px;
-  margin-bottom: 6px;
+.uploaded-link:hover {
+  color: #15803d;
 }
 
-.contact-column-sub {
-  font-size: 14.5px;
-  color: var(--text-dark-muted);
-  line-height: 1.55;
+.uploaded-address {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uploaded-address-sub {
+  font-size: 13.5px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+@media (max-width: 900px) {
+  .contact-main-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-info-card-uploaded {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+
+  .uploaded-card-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .uploaded-card-list {
+    gap: 22px;
+  }
+
+  .uploaded-icon-circle {
+    width: 46px;
+    height: 46px;
+    min-width: 46px;
+  }
+
+  .uploaded-link {
+    font-size: 15px;
+  }
 }
 
 /* 2x2 Grid + Banner */
@@ -4534,3 +4626,57 @@ section[id] {
 }
 
 
+
+
+/* Join Now Modal Form Dialog */
+.modal-join-form-dialog {
+  max-width: 500px;
+  padding: 34px;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.28), 0 0 0 1px rgba(0, 0, 0, 0.04);
+}
+
+.modal-join-form-dialog .contact-card-header {
+  padding-right: 36px;
+  margin-bottom: 20px;
+}
+
+.modal-join-form-dialog .contact-card-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.modal-join-form-dialog .contact-card-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-dark, #0f172a);
+  margin-bottom: 8px;
+}
+
+.modal-join-form-dialog .contact-card-sub {
+  font-size: 14px;
+  color: var(--text-dark-muted, #64748b);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+  .modal-join-form-dialog {
+    padding: 24px 18px;
+    max-width: 95%;
+  }
+
+  .modal-join-form-dialog .contact-card-header {
+    padding-right: 32px;
+  }
+}

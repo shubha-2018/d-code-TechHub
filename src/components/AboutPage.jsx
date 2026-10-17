@@ -123,18 +123,18 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
 
           {/* Right Visual Column */}
           <div className="story-visual-column">
-            <div className="about-center-img-frame">
+            <div className="about-center-img-frame founder-frame-glow">
               <img
-                src="/images/about_center_student.png?v=hd3"
-                alt="Student learning programming at D-Code Tech Hub"
-                className="about-center-student-img"
+                src="/images/founder_dipali_dube.png?v=real_founder"
+                alt="Prof. Dipali Dube - Founder & Lead Trainer of D-Code Tech Hub"
+                className="about-center-student-img founder-center-img"
               />
             </div>
 
             {/* Tagline Badge */}
             <div className="about-tagline-badge">
               <Sparkles size={18} className="tagline-star" />
-              <span>Learn • Code • Build • Grow</span>
+              <span>Prof. Dipali Dube &bull; Founder &amp; Mentor</span>
             </div>
           </div>
         </div>

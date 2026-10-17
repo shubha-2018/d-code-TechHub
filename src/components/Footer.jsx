@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
 import { MapPin, Phone, Mail } from 'lucide-react';
+import WhatsAppIcon from './WhatsAppIcon';
 
 export default function Footer({ onNavigate, onYouTubeClick, onPrivacyClick, onTermsClick }) {
   const handleNavClick = (tab) => {
@@ -32,6 +33,18 @@ export default function Footer({ onNavigate, onYouTubeClick, onPrivacyClick, onT
 
           {/* Right: Social Media Buttons */}
           <div className="footer-socials">
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/919284316487?text=Hello%20D-Code%20Tech%20Hub,%20I%20would%20like%20to%20inquire%20about%20the%20courses."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-btn social-whatsapp"
+              aria-label="Direct Chat on WhatsApp (+91 92843 16487)"
+              title="Official WhatsApp +91 92843 16487"
+            >
+              <WhatsAppIcon size={20} color="#ffffff" />
+            </a>
+
             {/* YouTube */}
             <a
               href="https://www.youtube.com/@dcodetechhub"

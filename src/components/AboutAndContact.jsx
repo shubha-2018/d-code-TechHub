@@ -123,13 +123,13 @@ export default function AboutAndContact({ onNotify }) {
           </div>
         </div>
 
-        {/* 2. Center Column: Exact Student Visual with Laptop & Script */}
+        {/* 2. Center Column: Founder Photo Visual */}
         <div className="about-center-visual">
-          <div className="about-center-img-frame">
+          <div className="about-center-img-frame founder-frame-glow">
             <img
-              src="/images/about_center_student.png?v=hd3"
-              alt="D-Code Tech Hub Student Learning Online"
-              className="about-center-student-img"
+              src="/images/founder_dipali_dube.png?v=real_founder"
+              alt="Prof. Dipali Dube - Founder & Lead Trainer of D-Code Tech Hub"
+              className="about-center-student-img founder-center-img"
             />
           </div>
         </div>
