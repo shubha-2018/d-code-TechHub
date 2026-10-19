@@ -97,11 +97,15 @@ export default function Footer({ onNavigate, onYouTubeClick, onPrivacyClick, onT
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright notice */}
+        {/* Bottom Bar: Copyright notice & Developer Credit */}
         <div className="footer-bottom-bar">
-          <p>
-            <strong>Learn. Code. Build. Grow.</strong> • © {new Date().getFullYear()} D-Code Tech Hub. All rights reserved.
+          <p className="footer-copyright-text">
+            <strong>Learn. Code. Build. Grow.</strong> &bull; &copy; {new Date().getFullYear()} D-Code Tech Hub. All rights reserved.
           </p>
+          <div className="footer-developer-credit">
+            <span className="dev-credit-label">Designed &amp; Developed by</span>
+            <span className="dev-credit-brand">Wisdom Tech IT Services</span>
+          </div>
         </div>
       </div>
     </footer>
