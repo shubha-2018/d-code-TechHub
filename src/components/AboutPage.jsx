@@ -1,15 +1,11 @@
 import React from 'react';
 import {
   BookOpen,
-  Video,
   Code2,
   Rocket,
   CheckCircle2,
   ArrowRight,
-  ShieldCheck,
-  Users,
   Award,
-  Laptop,
   Target,
   Compass,
   Quote,
@@ -47,40 +43,121 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
   ];
 
   const COURSES_LIST = [
-    { name: 'C Programming', desc: 'Programming fundamentals, logic building, memory & pointers' },
-    { name: 'C++ Programming', desc: 'Object-oriented programming, STL, memory management & algorithms' },
-    { name: 'Core Java', desc: 'Java fundamentals, OOP principles, collections & practical console/GUI apps' },
-    { name: 'Python', desc: 'Python syntax, problem solving, automation, data handling & projects' },
-    { name: 'Web Technology', desc: 'HTML5, CSS3, JavaScript ES6+, responsive design & live portfolio apps' }
+    { name: 'C Programming', label: 'C', desc: 'Programming fundamentals, logic building, memory & pointers' },
+    { name: 'C++ Programming', label: 'C++', desc: 'Object-oriented programming, STL, memory management & algorithms' },
+    { name: 'Core Java', label: 'Java', desc: 'Java fundamentals, OOP principles, collections & practical console/GUI apps' },
+    { name: 'Python', label: 'Python', desc: 'Python syntax, problem solving, automation, data handling & projects' },
+    { name: 'Web Technology', label: 'Web', desc: 'HTML5, CSS3, JavaScript ES6+, responsive design & live portfolio apps' }
   ];
 
   return (
     <div className="page-wrapper about-page-view">
-      {/* Page Header Banner */}
-      <section className="page-header-banner">
-        <div className="page-header-container">
-          <span className="section-pill">ABOUT US</span>
-          <h1 className="page-main-title">About D-Code Tech Hub</h1>
-          <p className="page-main-motto">
-            <span className="motto-word">Learn.</span>
-            <span className="motto-word">Code.</span>
-            <span className="motto-word">Build.</span>
-            <span className="motto-word highlight">Grow.</span>
-          </p>
-          <p className="page-main-sub">
+
+      {/* ── TOP HEADER BANNER (Matches requested UI) ── */}
+      <section className="about-hero-header-banner">
+        <div className="about-hero-header-container">
+          <span className="about-hero-label">ABOUT US</span>
+          <h1 className="about-hero-title">About D-Code Tech Hub</h1>
+          <div className="about-hero-motto">
+            <span className="motto-white">Learn.</span>
+            <span className="motto-white">Code.</span>
+            <span className="motto-white">Build.</span>
+            <span className="motto-blue">Grow.</span>
+          </div>
+          <p className="about-hero-sub">
             A technology-focused learning institute committed to making quality technical education simple, practical, and accessible for everyone.
           </p>
         </div>
       </section>
 
-      {/* Main Institute Story Section */}
+      {/* ── SECTION 1: Founder Bio ── */}
+      <section className="founder-section" id="founder">
+        <div className="founder-container">
+          <div className="founder-card-wrapper">
+
+            {/* Left: Photo + Profile Card */}
+            <div className="founder-visual-card">
+              <div className="founder-image-frame">
+                <img
+                  src="/images/founder_dipali_dube.png?v=real_founder"
+                  alt="Prof. Dipali Dube - Founder & Trainer of D-Code Tech Hub"
+                  className="founder-portrait-img"
+                />
+              </div>
+              <div className="founder-experience-tag-wrapper">
+                <span className="founder-experience-tag">
+                  <Award size={15} />
+                  <span>4+ Years Coaching Experience</span>
+                </span>
+              </div>
+
+              <div className="founder-quick-bio">
+                <h1 className="founder-name">Prof. Dipali Dube</h1>
+                <p className="founder-role">Founder &amp; Trainer, D-CODE TECH HUB</p>
+                <p className="founder-sub-role">Dipali Sureshrao Dube</p>
+              </div>
+
+              <div className="founder-highlights-list">
+                <div className="founder-highlight-item">
+                  <CheckCircle2 size={16} className="highlight-check" />
+                  <span>4+ Years Programming Coaching</span>
+                </div>
+                <div className="founder-highlight-item">
+                  <CheckCircle2 size={16} className="highlight-check" />
+                  <span>Hands-on Live Project Mentoring</span>
+                </div>
+                <div className="founder-highlight-item">
+                  <CheckCircle2 size={16} className="highlight-check" />
+                  <span>Personal Attention &amp; Career Guidance</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Story + Quote */}
+            <div className="founder-text-column">
+              <div className="founder-story-badge">
+                <GraduationCap size={16} />
+                <span>Passionate Educator &amp; Tech Mentor</span>
+              </div>
+
+              <h2 className="founder-story-heading">Empowering Every Student's Journey in IT</h2>
+
+              <p className="founder-paragraph">
+                <strong>Dipali Dube</strong> is the Founder &amp; Trainer of <strong>D-CODE TECH HUB</strong>, passionate about teaching and helping students build real-world skills in programming and web development. With a focus on making technical education simple, practical, and career-oriented, she aims to help every student confidently begin their journey in the IT industry.
+              </p>
+
+              <p className="founder-paragraph">
+                With <strong>4+ years of teaching and coaching experience</strong> in programming and web development, Dipali has helped many students learn, practice, and grow in the field of technology. Her teaching approach combines personal attention, hands-on learning, practical projects, career guidance, and friendly mentoring.
+              </p>
+
+              <p className="founder-paragraph">
+                She believes that with the right guidance, practice, and support, anyone can learn technology and create a better future for themselves. Her vision is to create a positive and supportive learning environment where students can develop technical skills, confidence, and career readiness.
+              </p>
+
+              {/* Quote Box */}
+              <div className="founder-quote-box">
+                <Quote size={32} className="quote-mark" />
+                <blockquote className="founder-quote-text">
+                  "I believe that with the right guidance, practice and support, anyone can learn technology and create a better future for themselves."
+                </blockquote>
+                <div className="founder-quote-author">
+                  <strong>— Prof. Dipali Dube</strong>
+                  <span>Founder &amp; Trainer, D-Code Tech Hub</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── SECTION 2: Our Commitment ── */}
       <section className="about-main-story-section">
         <div className="about-story-container">
           {/* Left Text Column */}
           <div className="story-text-column">
             <span className="story-eyebrow">OUR COMMITMENT</span>
             <h2 className="story-title">Making Quality Technical Education Simple, Practical &amp; Accessible</h2>
-            
+
             <p className="about-paragraph highlight-paragraph">
               <strong>D-CODE TECH HUB</strong> is a technology-focused learning institute committed to making quality technical education simple, practical, and accessible. The institute helps learners build strong programming fundamentals through structured, hands-on learning and practical experience.
             </p>
@@ -131,7 +208,6 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
               />
             </div>
 
-            {/* Tagline Badge */}
             <div className="about-tagline-badge">
               <Sparkles size={18} className="tagline-star" />
               <span>Prof. Dipali Dube &bull; Founder &amp; Mentor</span>
@@ -140,7 +216,7 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
         </div>
       </section>
 
-      {/* 4 Pillars Methodology Section */}
+      {/* ── SECTION 3: Four Pillars ── */}
       <section className="about-values-section">
         <div className="about-values-container">
           <div className="section-header-center">
@@ -164,105 +240,7 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
         </div>
       </section>
 
-      {/* About The Founder Section */}
-      <section className="founder-section" id="founder">
-        <div className="founder-container">
-          <div className="section-header-center">
-            <span className="section-pill">LEADERSHIP &amp; MENTORSHIP</span>
-            <h2 className="section-main-heading">About The Founder</h2>
-            <p className="section-sub-heading">
-              Meet the visionary mentor dedicated to empowering learners through personal attention and practical coding.
-            </p>
-          </div>
-
-          <div className="founder-card-wrapper">
-            {/* Left Photo & Profile Card */}
-            <div className="founder-visual-card">
-              <div className="founder-image-frame">
-                <img
-                  src="/images/founder_dipali_dube.png?v=real_founder"
-                  alt="Prof. Dipali Dube - Founder & Trainer of D-Code Tech Hub"
-                  className="founder-portrait-img"
-                />
-              </div>
-              <div className="founder-experience-tag-wrapper">
-                <span className="founder-experience-tag">
-                  <Award size={15} />
-                  <span>4+ Years Coaching Experience</span>
-                </span>
-              </div>
-
-              <div className="founder-quick-bio">
-                <h3 className="founder-name">Prof. Dipali Dube</h3>
-                <p className="founder-role">Founder &amp; Trainer, D-CODE TECH HUB</p>
-                <p className="founder-sub-role">Dipali Sureshrao Dube</p>
-              </div>
-
-              {/* Founder Key Badges */}
-              <div className="founder-highlights-list">
-                <div className="founder-highlight-item">
-                  <CheckCircle2 size={16} className="highlight-check" />
-                  <span>4+ Years Programming Coaching</span>
-                </div>
-                <div className="founder-highlight-item">
-                  <CheckCircle2 size={16} className="highlight-check" />
-                  <span>Hands-on Live Project Mentoring</span>
-                </div>
-                <div className="founder-highlight-item">
-                  <CheckCircle2 size={16} className="highlight-check" />
-                  <span>Personal Attention &amp; Career Guidance</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Story & Quote Column */}
-            <div className="founder-text-column">
-              <div className="founder-story-badge">
-                <GraduationCap size={16} />
-                <span>Passionate Educator &amp; Tech Mentor</span>
-              </div>
-
-              <h3 className="founder-story-heading">Empowering Every Student's Journey in IT</h3>
-
-              <p className="founder-paragraph">
-                <strong>Dipali Dube</strong> is the Founder &amp; Trainer of <strong>D-CODE TECH HUB</strong>, passionate about teaching and helping students build real-world skills in programming and web development. With a focus on making technical education simple, practical, and career-oriented, she aims to help every student confidently begin their journey in the IT industry.
-              </p>
-
-              <p className="founder-paragraph">
-                With <strong>4+ years of teaching and coaching experience</strong> in programming and web development, Dipali has helped many students learn, practice, and grow in the field of technology. Her teaching approach combines personal attention, hands-on learning, practical projects, career guidance, and friendly mentoring.
-              </p>
-
-              <p className="founder-paragraph">
-                She believes that with the right guidance, practice, and support, anyone can learn technology and create a better future for themselves. Her vision is to create a positive and supportive learning environment where students can develop technical skills, confidence, and career readiness.
-              </p>
-
-              {/* Quote Box */}
-              <div className="founder-quote-box">
-                <Quote size={32} className="quote-mark" />
-                <blockquote className="founder-quote-text">
-                  "I believe that with the right guidance, practice and support, anyone can learn technology and create a better future for themselves."
-                </blockquote>
-                <div className="founder-quote-author">
-                  <strong>— Prof. Dipali Dube</strong>
-                  <span>Founder &amp; Trainer, D-Code Tech Hub</span>
-                </div>
-              </div>
-
-              <div className="founder-cta-row">
-                <button onClick={() => onJoinClick()} className="btn-join-primary">
-                  <span>Book Free Demo Class with Founder</span>
-                  <ArrowRight size={16} />
-                </button>
-                <button onClick={() => onNavigate('contact')} className="btn-hero-secondary">
-                  <span>Contact Our Office</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Courses Offered Overview */}
+      {/* ── SECTION 4: Curriculum ── */}
       <section className="courses-offered-overview">
         <div className="about-values-container">
           <div className="section-header-center">
@@ -276,7 +254,7 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
           <div className="courses-overview-grid">
             {COURSES_LIST.map((c, i) => (
               <div key={i} className="course-overview-card" onClick={() => onNavigate('courses')}>
-                <div className="course-overview-badge">{c.name.split(' ')[0]}</div>
+                <div className="course-overview-badge">{c.label}</div>
                 <h3 className="course-overview-title">{c.name}</h3>
                 <p className="course-overview-desc">{c.desc}</p>
                 <span className="course-overview-link">
@@ -288,7 +266,7 @@ export default function AboutPage({ onJoinClick, onNavigate }) {
         </div>
       </section>
 
-      {/* Bottom CTA Box */}
+      {/* ── Bottom CTA ── */}
       <section className="about-cta-section">
         <div className="about-cta-box">
           <div className="cta-text">

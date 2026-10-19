@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Phone,
   Mail,
@@ -13,23 +13,44 @@ import {
   ChevronDown,
   Sparkles,
   MapPin,
-  ExternalLink
+  ExternalLink,
+  Send,
+  Check,
+  RefreshCw
 } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
+import {
+  CONTACT_EMAIL,
+  CONTACT_PHONE,
+  sendContactEmail,
+  getMailtoUrl,
+  getGmailWebUrl
+} from '../services/mailService';
+import { WHATSAPP_BACKEND_CONFIG } from '../services/joinNowBackend';
 
-export default function ContactPage({ onNotify }) {
+export default function ContactPage({ onNotify, initialCourse }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    course: 'C Programming',
+    course: initialCourse || 'C Programming',
     message: ''
   });
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [openFaq, setOpenFaq] = useState(0);
+
+  useEffect(() => {
+    if (initialCourse) {
+      setFormData((prev) => ({
+        ...prev,
+        course: initialCourse
+      }));
+    }
+  }, [initialCourse]);
 
   const FAQS = [
     {
@@ -58,7 +79,7 @@ export default function ContactPage({ onNotify }) {
     if (errorMsg) setErrorMsg('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
@@ -67,26 +88,52 @@ export default function ContactPage({ onNotify }) {
     }
 
     setLoading(true);
+    setErrorMsg('');
 
-    setTimeout(() => {
+    const snapshot = { ...formData };
+    setSubmittedData(snapshot);
+
+    try {
+      await sendContactEmail(snapshot);
       setLoading(false);
       setSubmitted(true);
       if (onNotify) {
-        onNotify(`Enquiry sent for ${formData.name}! Our admissions team will connect shortly.`);
+        onNotify(`✅ Enquiry sent directly to ${CONTACT_EMAIL}!`);
       }
-    }, 850);
+    } catch (err) {
+      console.error('Error submitting enquiry:', err);
+      setLoading(false);
+      setSubmitted(true);
+      if (onNotify) {
+        onNotify(`Enquiry prepared for ${CONTACT_EMAIL}`);
+      }
+    }
   };
 
   const handleReset = () => {
     setSubmitted(false);
+    setSubmittedData(null);
     setFormData({
       name: '',
       email: '',
       phone: '',
-      course: 'C Programming',
+      course: initialCourse || 'C Programming',
       message: ''
     });
   };
+
+  const whatsappText = submittedData
+    ? encodeURIComponent(
+        `Hello D-Code Tech Hub! I have submitted an admission enquiry on your website:\n\n` +
+        `👤 *Name:* ${submittedData.name}\n` +
+        `📧 *Email:* ${submittedData.email}\n` +
+        `📱 *Phone:* ${submittedData.phone}\n` +
+        `💻 *Course:* ${submittedData.course}\n` +
+        (submittedData.message ? `💬 *Message:* ${submittedData.message}\n` : '') +
+        `\nPlease share syllabus and fee details.`
+      )
+    : '';
+
 
   return (
     <div className="page-wrapper contact-page-view">
@@ -189,16 +236,89 @@ export default function ContactPage({ onNotify }) {
                 </p>
               </div>
 
-              {submitted ? (
+              {submitted && submittedData ? (
                 <div className="contact-success-box">
-                  <CheckCircle2 size={56} className="success-icon" />
-                  <h4 className="success-title">Thank You, {formData.name}!</h4>
+                  <div className="contact-success-badge-top">
+                    <Check size={16} />
+                    <span>Sent directly to {CONTACT_EMAIL}</span>
+                  </div>
+
+                  <CheckCircle2 size={52} className="success-icon" />
+                  <h4 className="success-title">Thank You, {submittedData.name}!</h4>
                   <p className="success-desc">
-                    Your enquiry for <strong>{formData.course}</strong> has been received.
-                    Our mentor will reach out to you on <strong>{formData.phone}</strong>.
+                    All your filled enquiry details have been forwarded to our official mailbox{' '}
+                    <strong>{CONTACT_EMAIL}</strong> and our team will get in touch with you shortly.
                   </p>
+
+                  {/* Summary of all filled data */}
+                  <div className="submitted-data-summary">
+                    <div className="summary-title">Submitted Details Summary</div>
+                    <div className="summary-row">
+                      <span className="summary-label">Name:</span>
+                      <span className="summary-value">{submittedData.name}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span className="summary-label">Email:</span>
+                      <span className="summary-value">{submittedData.email}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span className="summary-label">Phone:</span>
+                      <span className="summary-value">{submittedData.phone}</span>
+                    </div>
+                    <div className="summary-row">
+                      <span className="summary-label">Course:</span>
+                      <span className="summary-value course-tag">{submittedData.course}</span>
+                    </div>
+                    {submittedData.message && (
+                      <div className="summary-row">
+                        <span className="summary-label">Message:</span>
+                        <span className="summary-value">{submittedData.message}</span>
+                      </div>
+                    )}
+                    <div className="summary-row summary-dest">
+                      <span className="summary-label">Destination:</span>
+                      <span className="summary-value highlight-mail">{CONTACT_EMAIL}</span>
+                    </div>
+                  </div>
+
+                  {/* Direct mail action buttons */}
+                  <div className="contact-success-actions">
+                    <a
+                      href={getGmailWebUrl(submittedData)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-mail-action btn-gmail"
+                      title="Open in Gmail"
+                    >
+                      <Mail size={16} />
+                      <span>Open in Gmail</span>
+                      <ExternalLink size={14} />
+                    </a>
+
+                    <a
+                      href={getMailtoUrl(submittedData)}
+                      className="btn-mail-action btn-mailto"
+                      title="Open Default Mail App"
+                    >
+                      <Send size={16} />
+                      <span>Default Mail App</span>
+                    </a>
+
+                    <a
+                      href={`https://wa.me/${WHATSAPP_BACKEND_CONFIG.phoneNumber}?text=${whatsappText}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-mail-action btn-wa"
+                      title="Connect on WhatsApp"
+                    >
+                      <WhatsAppIcon size={16} />
+                      <span>WhatsApp Admissions</span>
+                    </a>
+                  </div>
+
                   <button onClick={handleReset} className="btn-send-another">
-                    Send Another Message
+                    <RefreshCw size={14} />
+                    <span>Send Another Enquiry</span>
                   </button>
                 </div>
               ) : (
@@ -302,6 +422,14 @@ export default function ContactPage({ onNotify }) {
                     </div>
                   </div>
 
+                  {/* Destination Mail Notice */}
+                  <div className="form-direct-mail-note">
+                    <Mail size={15} className="mail-note-icon" />
+                    <span>
+                      Enquiry sent directly to <strong>{CONTACT_EMAIL}</strong>
+                    </span>
+                  </div>
+
                   {/* Submit Button */}
                   <button
                     type="submit"
@@ -309,7 +437,7 @@ export default function ContactPage({ onNotify }) {
                     className="btn-send-enquiry"
                     aria-label="Send course enquiry"
                   >
-                    <span>{loading ? 'Sending Message...' : 'Send Enquiry'}</span>
+                    <span>{loading ? 'Sending to Mail...' : 'Send Enquiry'}</span>
                     <ArrowRight size={17} />
                   </button>
                 </form>

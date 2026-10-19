@@ -11,6 +11,7 @@ import VideoModal from './components/VideoModal';
 import CourseModal from './components/CourseModal';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Toast from './components/Toast';
+import { getQuickWhatsAppJoinUrl } from './services/joinNowBackend';
 import './App.css';
 
 const VALID_TABS = ['home', 'courses', 'reviews', 'about', 'contact'];
@@ -112,11 +113,10 @@ function App() {
     }, 4500);
   };
 
-  // Open only the Send Us a Message form modal when clicking "Join Now"
+  // Directly open WhatsApp with a pre-filled message when clicking "Join Now"
   const handleJoinClick = (courseName = '') => {
-    setCourseModalOpen(false);
-    setSelectedCourseForEnroll(courseName || 'C Programming');
-    setEnrollModalOpen(true);
+    const url = getQuickWhatsAppJoinUrl(courseName);
+    window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   const handlePlayReview = (review) => {
