@@ -223,8 +223,8 @@ export default function ContactPage({ onNotify, initialCourse }) {
           </div>
 
           {/* Right Column: Contact Form Card */}
-          <div className="contact-form-column">
-            <div className="contact-card">
+          <div className="contact-form-column" id="contact-form-section">
+            <div className="contact-card" id="contact-form-card">
               <div className="contact-card-header">
                 <div className="contact-card-pill">
                   <Sparkles size={14} />
@@ -322,7 +322,7 @@ export default function ContactPage({ onNotify, initialCourse }) {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="contact-form" noValidate>
+                <form id="contact-form" onSubmit={handleSubmit} className="contact-form" noValidate>
                   {errorMsg && <div className="form-error-banner" role="alert">{errorMsg}</div>}
 
                   {/* Name */}

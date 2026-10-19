@@ -14,7 +14,8 @@ import {
   Send,
   ExternalLink,
   Check,
-  RefreshCw
+  RefreshCw,
+  Sparkles
 } from 'lucide-react';
 import WhatsAppIcon from './WhatsAppIcon';
 import {
@@ -122,6 +123,21 @@ export default function AboutAndContact({ onNotify }) {
             </div>
           </div>
 
+          {/* Mobile-Only: Prof. Dipali Dube Photo shown FIRST before description on mobile screens */}
+          <div className="about-mobile-founder-visual">
+            <div className="about-center-img-frame founder-frame-glow">
+              <img
+                src="/images/founder_dipali_dube.png?v=real_founder"
+                alt="Prof. Dipali Dube - Founder & Lead Trainer of D-Code Tech Hub"
+                className="about-center-student-img founder-center-img"
+              />
+            </div>
+            <div className="about-tagline-badge home-founder-badge">
+              <Sparkles size={16} className="tagline-star" />
+              <span>Prof. Dipali Dube &bull; Founder &amp; Trainer</span>
+            </div>
+          </div>
+
           <p className="about-paragraph">
             <strong>D-CODE TECH HUB</strong> is a technology-focused learning institute committed to making quality technical education simple, practical, and accessible. The institute helps learners build strong programming fundamentals through structured, hands-on learning and practical experience.
           </p>
@@ -162,7 +178,7 @@ export default function AboutAndContact({ onNotify }) {
           </div>
         </div>
 
-        {/* 2. Center Column: Founder Photo Visual */}
+        {/* 2. Center Column: Founder Photo Visual (Desktop version) */}
         <div className="about-center-visual">
           <div className="about-center-img-frame founder-frame-glow">
             <img
@@ -170,6 +186,10 @@ export default function AboutAndContact({ onNotify }) {
               alt="Prof. Dipali Dube - Founder & Lead Trainer of D-Code Tech Hub"
               className="about-center-student-img founder-center-img"
             />
+          </div>
+          <div className="about-tagline-badge home-founder-badge">
+            <Sparkles size={16} className="tagline-star" />
+            <span>Prof. Dipali Dube &bull; Founder &amp; Trainer</span>
           </div>
         </div>
 

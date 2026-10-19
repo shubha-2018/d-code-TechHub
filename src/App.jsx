@@ -113,10 +113,17 @@ function App() {
     }, 4500);
   };
 
-  // Directly open WhatsApp with a pre-filled message when clicking "Join Now"
+  // Directly open WhatsApp with a pre-filled message when clicking "Join Now" from courses/hero
   const handleJoinClick = (courseName = '') => {
     const url = getQuickWhatsAppJoinUrl(courseName);
     window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
+  // When clicking "Join Now" in Navbar: open ONLY the Contact Us form, do NOT open WhatsApp
+  const handleNavbarJoinClick = () => {
+    setActiveTab('contact');
+    window.location.hash = '#/contact';
+    scrollToContactForm();
   };
 
   const handlePlayReview = (review) => {
@@ -140,7 +147,7 @@ function App() {
       <Navbar
         activeTab={activeTab}
         onNavigate={handleNavigate}
-        onJoinClick={() => handleJoinClick()}
+        onJoinClick={handleNavbarJoinClick}
       />
 
       {/* Main Tab View */}
